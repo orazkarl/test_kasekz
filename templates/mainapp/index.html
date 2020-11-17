@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <a href="{% url 'post_create' %}" class="btn btn-primary">Create a post</a>
+    <h1>Posts:</h1>
+    {% for post in post_list %}
+        <div class="card">
+        <h5 class="card-header">Author: {{ post.author }}</h5>
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.content|safe|slice:":100" }}</p>
+            <a href="{% url 'post_detail' post.id %}" class="btn btn-primary">More</a>
+            {% if post.author == user %}
+                <a href="{% url 'post_update' post.id %}" class="btn btn-success">Edit</a>
+                <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">Delete</a>
+            {% endif %}
+            <p>{{ post.created_at }}</p>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

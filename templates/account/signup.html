@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load static %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h1>Signup</h1>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{% url 'account_signup' %}" class="form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}"
+                           value="{{ redirect_field_value }}"/>
+                {% endif %}
+                <small class="form-text text-dark"><a
+                        href="{% url 'account_login' %}">Login</a> </small>
+                <button type="submit" class="btn btn-primary mt-4">Sign up</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
