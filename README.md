@@ -1,5 +1,8 @@
 # Test task  kase.kz
-
+## Functionals 
+1. Login and signup with django-allauth
+2. CRUD for Post 
+3. CRUD for Comment
 
 
 ## Project install 
